@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Deploy React Application with Docker and GH Actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executing Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: echo "Hello, World"
